@@ -36,13 +36,13 @@ function get() {
 			info.style.display = "block"
 			if (party1 == true) {
 				database.ref(`users/${Roll_no}/Profile/`).update({
-					Vote: "party1",
+					Vote: "Shakti Sena",
 					Turn: '0',
 				})
 			}
 			if (party2 == true) {
 				database.ref(`users/${Roll_no}/Profile/`).update({
-					Vote: "party2",
+					Vote: "Catalyst",
 					Turn: '0',
 				})
 			}
