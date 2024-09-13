@@ -25,23 +25,23 @@ function get() {
 	var party2 = document.getElementById('party2').checked;
 	console.log(party1)
 	console.log(party2)
-	var user_ref = database.ref('users/' + Roll_no + '/Profile/')
+	var user_ref = database.ref(`users/${Roll_no}/Profile/`)
 	user_ref.on('value', function (snapshot) {
 		var h4 = document.getElementById('info')
 		var data = snapshot.val()
-		h4.innerHTML = 'Name:- ' + data.Name + ' | ' + 'Roll No.:- ' + data.RollNo;
-		console.log(data.Name);
+		h4.innerHTML = 'Name:- ' + data.Name + ' | ' + 'Roll No.:- ' + data.Roll_No;
+		console.log(data);
 		if (data.Turn == '1') {
 			dis.style.display = "block"
 			info.style.display = "block"
 			if (party1 == true) {
-				database.ref('users/' + Roll_no + '/Profile/').update({
+				database.ref(`users/${Roll_no}/Profile/`).update({
 					Vote: "party1",
 					Turn: '0',
 				})
 			}
 			if (party2 == true) {
-				database.ref('users/' + Roll_no + '/Profile/').update({
+				database.ref(`users/${Roll_no}/Profile/`).update({
 					Vote: "party2",
 					Turn: '0',
 				})
