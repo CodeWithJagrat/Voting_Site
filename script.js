@@ -18,11 +18,10 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database()
 
 
-
 function get() {
-	var Roll_no = document.getElementById('Roll_no').value
 	var party1 = document.getElementById('party1').checked;
 	var party2 = document.getElementById('party2').checked;
+	var Roll_no = document.getElementById('Roll_no').value
 	console.log(party1)
 	console.log(party2)
 	var user_ref = database.ref(`users/${Roll_no}/Profile/`)
@@ -48,13 +47,18 @@ function get() {
 			}
 		}
 		else if(data.Turn == "0"){
+			var h4 = document.getElementById('info')
 			dis.style.display = "none"
 			info.style.display = "block"
 			h4.innerHTML = "You Have Already Given The Vote";
 			
 		}
+		console.log(data.Turn)
 	})
+	party1 = false;
+	party2 = false;
 	info.style.display = "none"
 	dis.style.display = "none"
+
 	
 }
