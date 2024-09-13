@@ -25,7 +25,7 @@ function get() {
 	var party2 = document.getElementById('party2').checked;
 	console.log(party1)
 	console.log(party2)
-	var user_ref = database.ref('users/Profile' + Roll_no)
+	var user_ref = database.ref('users/' + Roll_no + '/Profile/')
 	user_ref.on('value', function (snapshot) {
 		var h4 = document.getElementById('info')
 		var data = snapshot.val()
@@ -35,13 +35,13 @@ function get() {
 			dis.style.display = "block"
 			info.style.display = "block"
 			if (party1 == true) {
-				database.ref('users/' + Roll_no).update({
+				database.ref('users/' + Roll_no + '/Profile/').update({
 					Vote: "party1",
 					Turn: '0',
 				})
 			}
 			if (party2 == true) {
-				database.ref('users/' + Roll_no).update({
+				database.ref('users/' + Roll_no + '/Profile/').update({
 					Vote: "party2",
 					Turn: '0',
 				})
