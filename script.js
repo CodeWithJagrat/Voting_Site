@@ -16,7 +16,8 @@ firebase.initializeApp(firebaseConfig);
 
 // Set database variable
 var database = firebase.database()
-
+var Shakti_Sena = 0;
+var Catalyst = 0;
 
 function get() {
 	var party1 = document.getElementById('party1').checked;
@@ -34,12 +35,21 @@ function get() {
 			dis.style.display = "block"
 			info.style.display = "block"
 			if (party1 == true) {
+				Shakti_Sena += 1;
 				database.ref(`users/${Roll_no}/Profile/`).update({
 					Vote: "Shakti Sena",
 					Turn: '0',
 				})
+				database.ref(`Shakti_Sena/`).update({
+					Vote: Shakti_Sena,
+				})
 			}
 			if (party2 == true) {
+				Catalyst += 1;
+				database.ref(`Catalyst/`).update({
+					Vote: Catalyst,
+				})
+
 				database.ref(`users/${Roll_no}/Profile/`).update({
 					Vote: "Catalyst",
 					Turn: '0',
@@ -59,6 +69,8 @@ function get() {
 	party2 = false;
 	info.style.display = "none"
 	dis.style.display = "none"
-
+	
+	party1 = document.getElementById('party1').checked = false;
+	party2 = document.getElementById('party2').checked = false;
 	
 }
